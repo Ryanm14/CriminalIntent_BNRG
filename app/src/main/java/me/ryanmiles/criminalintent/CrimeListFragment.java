@@ -1,5 +1,6 @@
 package me.ryanmiles.criminalintent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,15 +34,26 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
-    private class CrimeHolder extends RecyclerView.ViewHolder {
+    private class CrimeHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
 
         private TextView mTitleTextView;
         private TextView mDateTextView;
@@ -51,6 +63,7 @@ public class CrimeListFragment extends Fragment {
 
         public CrimeHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView)
                     itemView.findViewById(R.id.list_item_crime_title_text_view);
@@ -66,6 +79,12 @@ public class CrimeListFragment extends Fragment {
             mDateTextView.setText(mCrime.getDate().toString());
             mSolvedCheckBox.setChecked(mCrime.isSolved());
 
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
+            startActivity(intent);
         }
     }
 
