@@ -1,4 +1,4 @@
-package me.ryanmiles.criminalintent;
+package me.ryanmiles.criminalintent.fragments;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -14,6 +14,8 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import me.ryanmiles.criminalintent.R;
 
 /**
  * Created by Ryanm14 on 11/5/2015.

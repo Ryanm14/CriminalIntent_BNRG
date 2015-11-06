@@ -1,5 +1,6 @@
-package me.ryanmiles.criminalintent;
+package me.ryanmiles.criminalintent.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -39,6 +40,11 @@ public class Crime {
 
     public void setDate(Date date) {
         mDate = date;
+    }
+
+    public String getFormattedDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM dd, yyyy");
+        return dateFormat.format(mDate);
     }
 
     public boolean isSolved() {

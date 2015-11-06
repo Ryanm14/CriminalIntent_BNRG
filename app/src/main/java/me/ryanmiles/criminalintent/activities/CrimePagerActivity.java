@@ -1,21 +1,26 @@
-package me.ryanmiles.criminalintent;
+package me.ryanmiles.criminalintent.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
 
+import me.ryanmiles.criminalintent.R;
+import me.ryanmiles.criminalintent.fragments.CrimeFragment;
+import me.ryanmiles.criminalintent.model.Crime;
+import me.ryanmiles.criminalintent.model.CrimeLab;
+
 /**
  * Created by Ryanm14 on 11/4/2015.
  */
-public class CrimePagerActivity extends FragmentActivity {
+public class CrimePagerActivity extends AppCompatActivity {
     public static final String EXTRA_CRIME_ID = "me.ryanmiles.criminalintent.crime_id";
 
     private ViewPager mViewPager;

@@ -1,4 +1,4 @@
-package me.ryanmiles.criminalintent;
+package me.ryanmiles.criminalintent.fragments;
 
 
 import android.app.Activity;
@@ -17,9 +17,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+
+import me.ryanmiles.criminalintent.R;
+import me.ryanmiles.criminalintent.model.Crime;
+import me.ryanmiles.criminalintent.model.CrimeLab;
 
 /**
  * Created by Ryanm14 on 10/29/2015.
@@ -118,7 +121,7 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updateDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM dd, yyyy");
-        mDateButton.setText(dateFormat.format(mCrime.getDate()));
+
+        mDateButton.setText(mCrime.getFormattedDate());
     }
 }
